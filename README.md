@@ -1,136 +1,176 @@
-# Personal Blog Website (Yii Framework)
+# Task Manager
 
-## Project Description
+A robust web-based task management application built with Yii2 Basic Template. The application allows users to manage their personal tasks securely with features like user authentication, CRUD operations for tasks, and a responsive interface.
 
-A sophisticated personal blog website developed using the Yii Framework, showcasing modern web development practices and adherence to SCRUM methodological principles. This project demonstrates a comprehensive approach to building a scalable, maintainable web application with a focus on clean architecture and efficient functionality.
+## Features
 
-## 🌟 Key Features
+- **User Authentication**
+  - Secure registration and login system
+  - Password hashing and validation
+  - Session management
+  - Protected routes
 
-### Admin Capabilities
-- Comprehensive blog post management
-  - Create new blog posts with rich text editing
-  - Update existing posts seamlessly
-  - Delete posts with confirmation mechanisms
-- Full administrative control over content
+- **Task Management**
+  - Create, view, update, and delete tasks
+  - Task attributes include title, description, status, and due date
+  - Filter tasks by status
+  - User-specific task visibility
 
-### User Experience
-- Unrestricted post visibility
-- Detailed post view with view count tracking
-- Responsive and intuitive interface
+- **Responsive Design**
+  - Clean and intuitive user interface
+  - Consistent styling across devices
 
-### Technical Highlights
-- Robust view count tracking mechanism
-- Clean, modular code structure
-- Comprehensive unit testing
+## Prerequisites
 
-## 🛠 Technology Stack
-
-| Category | Technologies |
-|----------|--------------|
-| Backend | Yii Framework (PHP) |
-| Frontend | HTML, CSS, JavaScript |
-| Database | MySQL |
-| Version Control | Git (GitHub) |
-| Diagramming | draw.io |
-
-## 📦 Prerequisites
-
-Before you begin, ensure you have the following installed:
-- PHP 7.4 or higher
+- PHP >= 7.4
+- MySQL >= 5.7
 - Composer
-- MySQL 5.7 or higher
 - Git
 
-## 🚀 Installation & Setup
+## Installation
 
-### 1. Clone the Repository
+1. Clone the repository:
 ```bash
-git clone https://github.com/Temurbek-2001/personal-blog-website.git
-cd personal-blog-website
+git clone https://github.com/Rahimfa/Project-C1.git
+cd Project-C1
 ```
 
-### 2. Install Dependencies
+2. Install dependencies:
 ```bash
 composer install
 ```
 
-### 3. Database Configuration
-1. Create a new MySQL database
-2. Configure database connection in `config/db.php`
-3. Run database migrations:
+3. Create database and update configuration:
+```bash
+# Create a new MySQL database
+mysql -u root -p
+CREATE DATABASE task_manager;
+
+# Copy configuration template
+cp config/db.example.php config/db.php
+
+# Update config/db.php with your database credentials
+```
+
+4. Apply database migrations:
 ```bash
 ./yii migrate
 ```
 
-### 4. Start the Development Server
+5. Set up development environment:
 ```bash
-php -S localhost:8000
+./yii serve
 ```
 
-## 🔍 Project Structure
+The application will be available at `http://localhost:8080`
+
+## Configuration
+
+### Database
+
+Update `config/db.php` with your database credentials:
+
+```php
+return [
+    'class' => 'yii\db\Connection',
+    'dsn' => 'mysql:host=localhost;dbname=task_manager',
+    'username' => 'your_username',
+    'password' => 'your_password',
+    'charset' => 'utf8',
+];
+```
+
+
+
+## Usage
+
+1. Register a new account at `/site/signup`
+2. Log in with your credentials at `/site/login`
+3. Create new tasks using the "Create Task" button
+4. View your tasks on the dashboard
+5. Edit or delete tasks in detailed view
+
+
+## Project Structure
 
 ```
-project-root/
-│
-├── controllers/     # Application logic and request handling
-├── models/          # Data models and business logic
-├── views/           # User interface templates
-├── tests/           # Automated test suites
-└── docs/            # Project documentation and diagrams
+task-manager/
+├── config/             # Application configuration
+├── controllers/        # Controller classes
+├── models/             # Model classes
+├── views/              # View files
+├── web/                # Publicly accessible files
+├── tests/              # Test classes
+└── components/         # Custom components
 ```
 
-## 🏗 SCRUM Development Methodology
+## Testing
 
-### Sprint Breakdown
+The project includes both unit and functional tests. To run the tests:
 
-| Sprint | Focus |
-|--------|-------|
-| Sprint 1 | Project initialization and basic CRUD implementation |
-| Sprint 2 | View count tracking and initial testing |
-| Sprint 3 | Refinement, bug fixing, and final testing |
-
-### Project Management
-- Comprehensive task tracking using JIRA
-- Regular sprint retrospectives
-- Continuous integration practices
-
-## 🧪 Testing
-
-### Unit Testing
-Comprehensive test coverage for:
-- CRUD operations
-- View count functionality
-- Model validations
-
-#### Running Tests
 ```bash
+# Run all tests
 ./vendor/bin/codecept run
-```
 
-## 📊 Performance Considerations
-- Efficient database queries
-- Minimal computational overhead
-- Scalable architecture design
+# Run specific suite
+./vendor/bin/codecept run unit
+./vendor/bin/codecept run functional
 
-## 🤝 Contributing
+
+## Development Workflow
+
+This project follows SCRUM methodology:
+
+1. Sprint Planning: Tasks are organized in 2-week sprints
+2. Daily Standups: Team updates through Git commits and comments
+3. Sprint Review: Code review and testing before merging to main branch
+4. Sprint Retrospective: Documentation updates and performance review
+
+## Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a pull request
+5. Open a Pull Request
 
+Please ensure your PR:
+- Follows the existing code style
+- Includes appropriate tests
+- Updates documentation as needed
+- References any relevant issues
 
+## Technologies Used
 
-## 👥 Contributors
+- **Backend**
+  - Yii2 Framework 2.0
+  - PHP 7.4+
+  - MySQL 5.7+
 
-- **Temurbek Mirzaliev**
-  - Student ID: `39293`
-  - Role: Lead Developer
+- **Frontend**
+  - Bootstrap 4
+  - jQuery
+  - HTML5/CSS3
 
-## 🔗 Project Links
-- GitHub Repository: (https://github.com/Temurbek-2001/personal-blog)
+- **Testing**
+  - Codeception
+  - PHPUnit
 
-**Note:** This project is developed as part of the Project IT course, demonstrating practical application of software development principles.
-# Project-C1
-# Project-C1
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Acknowledgments
+
+- [Yii2 Documentation](https://www.yiiframework.com/doc/guide/2.0/en)
+- [Bootstrap Documentation](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
+- [PHPUnit Documentation](https://phpunit.de/documentation.html)
+- All contributors who have helped with issues and pull requests
+
+## Contact
+
+Project Link: https://github.com/Rahimfa/Project-C1.git
+
+## Contributors:
+- Farid Rahimzada
+- Utkirbek Inamjanov

@@ -1,134 +1,145 @@
 <?php
-
-/** @var yii\web\View $this */
+/* @var $this yii\web\View */
 
 use yii\helpers\Html;
 
-$this->title = 'About';
+$this->title = 'About - Task Manager';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="site-about">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <!-- Main Title Section -->
+    <div class="container-fluid bg-light py-4 mb-4">
+        <div class="container">
+            <h1 class="display-4 mb-3"><?= Html::encode($this->title) ?></h1>
+            <p class="lead mb-0">A robust web-based task management application built with Yii2 Basic Template.</p>
+        </div>
+    </div>
 
-    <p>
-        Welcome to the Personal Blog Website project, developed using the Yii Framework. This project is a sophisticated, scalable, and maintainable personal blog website, demonstrating modern web development practices and the SCRUM methodology.
-    </p>
+    <div class="container">
+        <!-- Features and Tech Stack Section -->
+        <div class="row mb-4">
+            <!-- Key Features -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h2 class="h4 mb-0">Key Features</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-4">
+                            <h3 class="h5 font-weight-bold">User Authentication</h3>
+                            <ul class="list-unstyled pl-3">
+                                <li class="mb-2">✓ Secure registration and login system</li>
+                                <li class="mb-2">✓ Password hashing and validation</li>
+                                <li class="mb-2">✓ Session management</li>
+                                <li class="mb-2">✓ Protected routes</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="h5 font-weight-bold">Task Management</h3>
+                            <ul class="list-unstyled pl-3">
+                                <li class="mb-2">✓ Create, view, update, and delete tasks</li>
+                                <li class="mb-2">✓ Task attributes include title, description, status, and due date</li>
+                                <li class="mb-2">✓ Filter tasks by status</li>
+                                <li class="mb-2">✓ User-specific task visibility</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <h2>Project Description</h2>
-    <p>
-        The Personal Blog Website is designed to provide both admin and user functionalities, including comprehensive blog post management and a seamless user experience. The project emphasizes clean architecture, efficient functionality, and scalability.
-    </p>
+            <!-- Technology Stack -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h2 class="h4 mb-0">Technology Stack</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-4">
+                            <h3 class="h5 font-weight-bold">Backend</h3>
+                            <ul class="list-unstyled pl-3">
+                                <li class="mb-2">⚙️ Yii2 Framework 2.0</li>
+                                <li class="mb-2">⚙️ PHP 7.4+</li>
+                                <li class="mb-2">⚙️ MySQL 5.7+</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="h5 font-weight-bold">Frontend</h3>
+                            <ul class="list-unstyled pl-3">
+                                <li class="mb-2">🎨 Bootstrap 4</li>
+                                <li class="mb-2">🎨 jQuery</li>
+                                <li class="mb-2">🎨 HTML5/CSS3</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <h2>🌟 Key Features</h2>
-    <ul>
-        <li><strong>Admin Capabilities</strong>:
-            <ul>
-                <li>Comprehensive blog post management</li>
-                <li>Create, update, and delete blog posts</li>
-                <li>Admin control over content with confirmation mechanisms for deletions</li>
-            </ul>
-        </li>
-        <li><strong>User Experience</strong>:
-            <ul>
-                <li>Unrestricted post visibility</li>
-                <li>Detailed post view with view count tracking</li>
-                <li>Responsive and intuitive interface</li>
-            </ul>
-        </li>
-    </ul>
+        <!-- Development Team Section -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h2 class="h4 mb-0">Development Team</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <div class="p-3">
+                                    <div class="mb-3">
+                                        <i class="fas fa-user-circle fa-3x text-primary"></i>
+                                    </div>
+                                    <h3 class="h5 font-weight-bold">Farid Rahimzada</h3>
+                                    <p class="text-muted mb-0">Lead Developer</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-3">
+                                    <div class="mb-3">
+                                        <i class="fas fa-user-circle fa-3x text-primary"></i>
+                                    </div>
+                                    <h3 class="h5 font-weight-bold">Utkirbek Inamjanov</h3>
+                                    <p class="text-muted mb-0">Developer | Scrum Master</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <h2>🛠 Technology Stack</h2>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Category</th>
-            <th>Technologies</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>Backend</td>
-            <td>Yii Framework (PHP)</td>
-        </tr>
-        <tr>
-            <td>Frontend</td>
-            <td>HTML5, CSS3, JavaScript</td>
-        </tr>
-        <tr>
-            <td>Database</td>
-            <td>MySQL</td>
-        </tr>
-        <tr>
-            <td>Version Control</td>
-            <td>Git (GitHub)</td>
-        </tr>
-        <tr>
-            <td>Diagramming</td>
-            <td>draw.io</td>
-        </tr>
-        </tbody>
-    </table>
-
-    <h2>🚀 Installation & Setup</h2>
-    <p>To set up the project on your local machine, follow these steps:</p>
-    <ol>
-        <li>Clone the repository: <code>git clone https://github.com/Temurbek-2001/personal-blog-website.git</code></li>
-        <li>Install dependencies: <code>composer install</code></li>
-        <li>Set up the database:
-            <ul>
-                <li>Create a new MySQL database</li>
-                <li>Configure the database connection in <code>config/db.php</code></li>
-                <li>Run database migrations: <code>./yii migrate</code></li>
-            </ul>
-        </li>
-        <li>Start the development server: <code>php -S localhost:8000</code></li>
-    </ol>
-
-    <h2>🔍 Project Structure</h2>
-    <p>The project follows a modular structure:</p>
-    <pre>
-    project-root/
-    ├── controllers/     # Application logic and request handling
-    ├── models/          # Data models and business logic
-    ├── views/           # User interface templates
-    ├── tests/           # Automated test suites
-    └── docs/            # Project documentation and diagrams
-    </pre>
-
-    <h2>🏗 SCRUM Development Methodology</h2>
-    <p>This project was developed using SCRUM methodology:</p>
-    <ul>
-        <li><strong>Sprint 1:</strong> Project initialization and basic CRUD implementation</li>
-        <li><strong>Sprint 2:</strong> View count tracking and initial testing</li>
-        <li><strong>Sprint 3:</strong> Refinement, bug fixing, and final testing</li>
-    </ul>
-
-    <h2>🧪 Testing</h2>
-    <p>Unit tests ensure comprehensive coverage for CRUD operations, view count functionality, and model validations. Run tests with:</p>
-    <pre>./vendor/bin/codecept run</pre>
-
-    <h2>📊 Performance Considerations</h2>
-    <ul>
-        <li>Efficient database queries</li>
-        <li>Minimal computational overhead</li>
-        <li>Scalable architecture design</li>
-    </ul>
-
-    <h2>🤝 Contributing</h2>
-    <p>If you'd like to contribute, fork the repository, create your feature branch, and submit a pull request:</p>
-    <pre>
-    git checkout -b feature/AmazingFeature
-    git commit -m 'Add some AmazingFeature'
-    git push origin feature/AmazingFeature
-    </pre>
-
-    <h2>👥 Contributors</h2>
-    <ul>
-        <li><strong>Temurbek Mirzaliev</strong> (Student ID: 39293) – Lead Developer</li>
-    </ul>
-
-    <h2>🔗 Project Links</h2>
-    <p>GitHub Repository: <a href="https://github.com/Temurbek-2001/personal-blog">https://github.com/Temurbek-2001/personal-blog</a></p>
-
-    <p><strong>Note:</strong> This project is part of the Project IT course, demonstrating the practical application of software development principles.</p>
+        <!-- Footer Section -->
+        <div class="row">
+            <div class="col-12 text-center mb-4">
+                <p class="mb-3">This project is licensed under the MIT License.</p>
+                <?= Html::a('View Project on GitHub', 'https://github.com/Rahimfa/Project-C1.git', [
+                    'class' => 'btn btn-primary px-4',
+                    'target' => '_blank'
+                ]) ?>
+            </div>
+        </div>
+    </div>
 </div>
+
+<?php
+$this->registerCss("
+    .card {
+        border: none;
+        transition: transform 0.2s;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    .list-unstyled li {
+        position: relative;
+        padding-left: 5px;
+    }
+    .bg-primary {
+        background-color: #007bff !important;
+    }
+    .text-primary {
+        color: #007bff !important;
+    }
+");
+?>

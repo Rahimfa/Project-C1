@@ -31,7 +31,7 @@ class SiteController extends Controller
                 ],
                 
                 [
-                    'actions' => ['logout', 'index'],
+                    'actions' => ['logout', 'index', 'about'],
                     'allow' => true,
                     'roles' => ['@'], 
                 ],
@@ -70,11 +70,13 @@ class SiteController extends Controller
      * @return string
      */
     public function actionIndex()
-    {
-        $model = Task::find()->orderBy(['created_at' => SORT_DESC])->all();
+        {
+            
+            $userId = Yii::$app->user->id;
+            $model = Task::find()->where(['user_id' => $userId])->orderBy(['created_at' => SORT_DESC])->all();
+            return $this->render('index', ['tasks' => $model]);
+        }
 
-        return $this->render('index', ['tasks' => $model]);
-    }
 
 
 

@@ -24,7 +24,7 @@ foreach ($statuses as $status) {
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Task', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Task', ['task/create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <div class="board-container">

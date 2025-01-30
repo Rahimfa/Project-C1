@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use Yii;
 use app\models\Task;
 use app\models\TaskSearch;
 use yii\web\Controller;
@@ -70,6 +71,7 @@ class TaskController extends Controller
         $model = new Task();
 
         if ($this->request->isPost) {
+            $model->user_id = Yii::$app->user->id;
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
