@@ -1,7 +1,6 @@
 <?php
 
 /** @var yii\web\View $this */
-
 /** @var string $content */
 
 use app\assets\AppAsset;
@@ -33,68 +32,39 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 
 <header id="header">
     <?php
-
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
     ]);
 
-    // Define URLs
-    $loginUrl = Url::to(['/site/login']);
-    $signupUrl = Url::to(['/site/signup']);
+    $menuItems = [
+        ['label' => 'About', 'url' => ['/site/about']]
+    ];
 
-    // Register custom JavaScript for long press functionality
-    $this->registerJs(<<<JS
-    let timer;
-    const loginUrl = '$loginUrl';
-    const signupUrl = '$signupUrl';
-
-    document.getElementById('login-signup-link').addEventListener('mousedown', function() {
-        timer = setTimeout(function() {
-            // Redirect to the signup page after 3 seconds
-            window.location.href = signupUrl;
-        }, 3000);
-    });
-
-    document.getElementById('login-signup-link').addEventListener('mouseup', function() {
-        clearTimeout(timer); // Clear timer if the mouse is released before 3 seconds
-    });
-
-    document.getElementById('login-signup-link').addEventListener('click', function(e) {
-        clearTimeout(timer);
-        // Redirect to the login page for a normal click
-        window.location.href = loginUrl;
-    });
-    JS
-    );
+    if (Yii::$app->user->isGuest) {
+        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
+    } else {
+        $menuItems[] = ['label' => 'Tasks', 'url' => ['/task/index']];
+        $menuItems[] = [
+            'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+            'url' => ['/site/logout'],
+            'linkOptions' => [
+                'data-method' => 'post',
+                'class' => 'nav-link'
+            ]
+        ];
+    }
 
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav'],
-        'items' => [
-            !Yii::$app->user->isGuest ? ['label' => 'Posts', 'url' => ['/posts']] : '',
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Create', 'url' => ['/posts/create']],
-            Yii::$app->user->isGuest
-                ? Html::a('Login', '#', [
-                'id' => 'login-signup-link',
-                'class' => 'nav-link'
-            ])
-                : '<li class="nav-item">'
-                . Html::beginForm(['/site/logout'])
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'nav-link btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-        ]
+        'options' => ['class' => 'navbar-nav ms-auto'],
+        'items' => $menuItems
     ]);
 
     NavBar::end();
     ?>
 </header>
-
 
 <main id="main" class="flex-shrink-0" role="main">
     <div class="container">
@@ -109,8 +79,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <footer id="footer" class="mt-auto py-3 bg-light">
     <div class="container">
         <div class="row text-muted">
-            <div class="col-md-6 text-center text-md-start">&copy; Temur Mirzaliyev <?= date('Y') ?></div>
-
+            <div class="col-md-6 text-center text-md-start">&copy; Jira is ours <?= date('Y') ?></div>
         </div>
     </div>
 </footer>

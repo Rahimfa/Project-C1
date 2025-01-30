@@ -3,21 +3,19 @@
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
-/** @var app\models\Posts $model */
-/** @var array $categoryList */
+/** @var app\models\Task $model */
 
-$this->title = 'Update Posts: ' . $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Posts', 'url' => ['index']];
+$this->title = 'Update Task: ' . $model->title;
+$this->params['breadcrumbs'][] = ['label' => 'Tasks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
-<div class="posts-update">
+<div class="task-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,
-        'categoryList' => $categoryList,
     ]) ?>
 
 </div>

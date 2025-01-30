@@ -4,14 +4,12 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var app\models\Categories $model */
+/** @var app\models\Task $model */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Categories', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = $model->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="categories-view">
+<div class="task-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -30,8 +28,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'name',
+            'title',
+            'description:ntext',
+            'status',
+            'due_date',
             'created_at',
+            'updated_at',
         ],
     ]) ?>
 

@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Categories;
+use app\models\Task;
 
 /**
- * CategoriesSearch represents the model behind the search form of `app\models\Categories`.
+ * TaskSearch represents the model behind the search form of `app\models\Task`.
  */
-class CategoriesSearch extends Categories
+class TaskSearch extends Task
 {
     /**
      * {@inheritdoc}
@@ -18,7 +18,7 @@ class CategoriesSearch extends Categories
     {
         return [
             [['id'], 'integer'],
-            [['name', 'created_at'], 'safe'],
+            [['title', 'description', 'status', 'due_date', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class CategoriesSearch extends Categories
      */
     public function search($params)
     {
-        $query = Categories::find();
+        $query = Task::find();
 
         // add conditions that should always apply here
 
@@ -59,10 +59,14 @@ class CategoriesSearch extends Categories
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'due_date' => $this->due_date,
             'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'title', $this->title])
+            ->andFilterWhere(['like', 'description', $this->description])
+            ->andFilterWhere(['like', 'status', $this->status]);
 
         return $dataProvider;
     }
