@@ -115,7 +115,7 @@ The project includes both unit and functional tests. To run the tests:
 # Run specific suite
 ./vendor/bin/codecept run unit
 ./vendor/bin/codecept run functional
-
+```
 
 ## Development Workflow
 
