@@ -1,0 +1,15 @@
+actor: FunctionalTester
+modules:
+  enabled:
+    - Filesystem
+    - Yii2
+    - Asserts
+    - Db
+  config:
+    Db:
+      dsn: 'mysql:host=127.0.0.1;dbname=univer_test'
+      user: 'root'
+      password: 'newpassword'
+      dump: 'tests/_data/dump.sql' # Optional, for loading a database dump
+      populate: true # Load dump before each test
+      cleanup: true # Clean up the database after each test
