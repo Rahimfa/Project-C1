@@ -18,7 +18,7 @@ class LoginFormCest
     {
         $I->amLoggedInAs(1);
         $I->amOnPage('/');
-        $I->see('Logout (john_doe)');
+        $I->see('Logout (men)');
     }
 
     // demonstrates `amLoggedInAs` method
@@ -50,10 +50,10 @@ class LoginFormCest
     public function loginSuccessfully(\FunctionalTester $I)
     {
         $I->submitForm('#login-form', [
-            'LoginForm[username]' => 'demo',
-            'LoginForm[password]' => 'demodemo',
+            'LoginForm[username]' => 'men',
+            'LoginForm[password]' => 'menmen',
         ]);
-        $I->see('Logout (demo)');
+        $I->see('Logout (men)');
         $I->dontSeeElement('form#login-form');              
     }
 }

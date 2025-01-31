@@ -9,7 +9,7 @@ class UserTest extends \Codeception\Test\Unit
     public function testFindUserById()
     {
         verify($user = User::findIdentity(1))->notEmpty();
-        verify($user->username)->equals('john_doe');
+        verify($user->username)->equals('men');
 
         verify(User::findIdentity(999))->empty();
     }
