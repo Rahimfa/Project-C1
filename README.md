@@ -172,5 +172,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 Project Link: https://github.com/Rahimfa/Project-C1.git
 
 ## Contributors:
-- Farid Rahimzada
-- Utkirbek Inamjanov
+- Farid Rahimzada - 37858
+- Utkirbek Inamjanov - 41843
