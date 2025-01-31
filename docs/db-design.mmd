@@ -1,0 +1,22 @@
+erDiagram
+    user {
+        int id PK
+        string username UK "NOT NULL"
+        string email UK "NOT NULL"
+        string password_hash "NOT NULL"
+        string auth_key "NOT NULL"
+        string access_token "NULL"
+        int status "NOT NULL DEFAULT 10"
+        timestamp created_at "DEFAULT CURRENT_TIMESTAMP"
+        timestamp updated_at "DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    task {
+        int id PK
+        string title "NOT NULL"
+        text description
+        enum status "NOT NULL DEFAULT 'pending'"
+        date due_date
+        timestamp created_at "DEFAULT CURRENT_TIMESTAMP"
+        timestamp updated_at "DEFAULT CURRENT_TIMESTAMP"
+    }

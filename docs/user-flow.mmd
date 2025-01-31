@@ -1,0 +1,48 @@
+flowchart TD
+    Start([Start]) --> A{User logged in?}
+    
+    %% Authentication flows
+    A -->|No| B[Login Page]
+    A -->|Yes| C[Task Dashboard]
+    B --> D{Has Account?}
+    D -->|No| E[Sign Up Page]
+    D -->|Yes| B
+    E --> F[Create Account]
+    F --> B
+    B --> G[Enter Credentials]
+    G --> H{Valid?}
+    H -->|No| B
+    H -->|Yes| C
+    
+    %% Task management flows
+    C --> I[View Own Tasks]
+    I --> J{Choose Action}
+    
+    %% Create flow
+    J -->|Create| K[Create Task Form]
+    K --> L[Enter Task Details]
+    L --> M{Submit}
+    M -->|Success| C
+    M -->|Error| K
+    
+    %% Update flow
+    J -->|Update| N[Edit Task Form]
+    N --> O[Modify Task Details]
+    O --> P{Submit}
+    P -->|Success| C
+    P -->|Error| N
+    
+    %% Delete flow
+    J -->|Delete| Q{Confirm Delete}
+    Q -->|Yes| R[Delete Task]
+    R --> C
+    Q -->|No| C
+    
+    %% View flow
+    J -->|View| S[Task Details]
+    S --> C
+
+    style Start fill:#6c757d,color:#fff
+    style C fill:#28a745,color:#fff
+    style B fill:#007bff,color:#fff
+    style E fill:#007bff,color:#fff
