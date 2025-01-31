@@ -55,12 +55,12 @@ VALUES ('Technology'),
 
 
 -- Insert into the users table
-INSERT INTO users (username, email, password_hash, auth_key, access_token, role)
-VALUES ('john_doe', 'john@example.com', 'hashedpassword1', 'authkey1', 'token1', 'user'),
-       ('jane_smith', 'jane@example.com', 'hashedpassword2', 'authkey2', 'token2', 'admin'),
-       ('alice_williams', 'alice@example.com', 'hashedpassword3', 'authkey3', 'token3', 'user'),
-       ('bob_johnson', 'bob@example.com', 'hashedpassword4', 'authkey4', 'token4', 'user'),
-       ('charlie_brown', 'charlie@example.com', 'hashedpassword5', 'authkey5', 'token5', 'user');
+INSERT INTO user (username, email, password_hash, auth_key, access_token )
+VALUES ('john_doe', 'john@example.com', 'hashedpassword1', 'authkey1', 'token1'),
+       ('jane_smith', 'jane@example.com', 'hashedpassword2', 'authkey2', 'token2'),
+       ('alice_williams', 'alice@example.com', 'hashedpassword3', 'authkey3', 'token3'),
+       ('bob_johnson', 'bob@example.com', 'hashedpassword4', 'authkey4', 'token4'),
+       ('charlie_brown', 'charlie@example.com', 'hashedpassword5', 'authkey5', 'token5');
 
 -- Insert into the categories table (already populated with defaults in the previous script)
 -- You can add more categories here for testing

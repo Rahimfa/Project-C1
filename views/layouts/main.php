@@ -46,7 +46,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
     } else {
-        $menuItems[] = ['label' => 'Tasks', 'url' => ['/task/index']];
         $menuItems[] = [
             'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
             'url' => ['/site/logout'],

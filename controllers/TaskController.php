@@ -3,7 +3,6 @@
 namespace app\controllers;
 
 use Yii;
-use yii\web\Response;
 use app\models\Task;
 use app\models\TaskSearch;
 use yii\web\Controller;
@@ -27,28 +26,13 @@ class TaskController extends Controller
                     'class' => VerbFilter::className(),
                     'actions' => [
                         'delete' => ['POST'],
-                        'update'=> ['PUT', 'POST']
                     ],
                 ],
             ]
         );
     }
 
-    /**
-     * Lists all Task models.
-     *
-     * @return string
-     */
-    public function actionIndex()
-    {
-        $searchModel = new TaskSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
 
     /**
      * Displays a single Task model.
@@ -93,53 +77,11 @@ class TaskController extends Controller
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id = null)
+    public function actionUpdate($id)
     {
-        $request = Yii::$app->request;
-        
-        // Handle AJAX drag-and-drop updates
-        if ($request->isAjax) {
-            Yii::$app->response->format = Response::FORMAT_JSON;
-            
-            try {
-                $data = json_decode($request->getRawBody(), true);
-                
-                // Validate required data
-                if (!isset($data['id']) || !isset($data['status'])) {
-                    throw new \Exception('Missing required data');
-                }
-                
-                // Use the ID from the request data
-                $taskId = $data['id'];
-                $model = $this->findModel($taskId);
-                
-                // Update only the status
-                $model->status = $data['status'];
-                
-                if ($model->save()) {
-                    return [
-                        'success' => true,
-                        'message' => 'Status updated successfully'
-                    ];
-                } else {
-                    throw new \Exception('Failed to save model: ' . json_encode($model->errors));
-                }
-            } catch (\Exception $e) {
-                Yii::$app->response->statusCode = 400;
-                return [
-                    'success' => false,
-                    'message' => $e->getMessage()
-                ];
-            }
-        }
-
-        // Handle regular form updates
-        if ($id === null) {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-        
         $model = $this->findModel($id);
-        if ($request->isPost && $model->load($request->post()) && $model->save()) {
+
+        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -159,7 +101,7 @@ class TaskController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['site/index']);
     }
 
     /**
