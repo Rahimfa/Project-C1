@@ -6,7 +6,7 @@ use app\models\User;
 use FunctionalTester;
 use Yii;
 
-class PostsCest
+class TaskCest
 {
     private $testUser;
 
