@@ -174,3 +174,4 @@ Project Link: https://github.com/Rahimfa/Project-C1.git
 ## Contributors:
 - Farid Rahimzada - 37858
 - Utkirbek Inamjanov - 41843
+- Chris Mokaya - 42460
