@@ -6,7 +6,7 @@ use app\models\User;
 use FunctionalTester;
 use Yii;
 
-class PostsCest
+class TaskCest
 {
     private $testUser;
 
@@ -30,7 +30,7 @@ class PostsCest
         $I->see('Tasks Board', 'h1');
         $I->seeLink('Create Task');
         $I->click('Create Task');
-        $I->see('Create Task', 'h1');
+        $I->see('Create a new Task', 'h2');
 
     }
 

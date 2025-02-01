@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use yii\web\Response;
 use app\models\Task;
 use app\models\TaskSearch;
 use yii\web\Controller;
@@ -18,19 +19,21 @@ class TaskController extends Controller
      * @inheritDoc
      */
     public function behaviors()
-    {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
-    }
+{
+    return [
+        'corsFilter' => [
+            'class' => \yii\filters\Cors::className(),
+            'cors' => [
+                // Specify your exact domain instead of wildcard
+                'Origin' => [Yii::$app->request->hostInfo],
+                'Access-Control-Request-Method' => ['POST'],
+                'Access-Control-Request-Headers' => ['X-Requested-With', 'content-type'],
+                'Access-Control-Allow-Credentials' => true,
+                'Access-Control-Max-Age' => 3600,
+            ],
+        ],
+    ];
+}
 
 
 
@@ -89,6 +92,38 @@ class TaskController extends Controller
             'model' => $model,
         ]);
     }
+
+
+    public function actionUpdateStatus()
+{
+    Yii::$app->response->headers->set('Referrer-Policy', 'strict-origin-when-cross-origin');
+    Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+    
+    $request = Yii::$app->request;
+    if (!$request->isAjax) {
+        return ['success' => false, 'message' => 'Invalid request'];
+    }
+
+    $data = json_decode($request->getRawBody(), true);
+    $taskId = $data['taskId'] ?? null;
+    $newStatus = $data['status'] ?? null;
+
+    if (!$taskId || !$newStatus) {
+        return ['success' => false, 'message' => 'Missing required parameters'];
+    }
+
+    $task = Task::findOne($taskId);
+    if (!$task) {
+        return ['success' => false, 'message' => 'Task not found'];
+    }
+
+    $task->status = $newStatus;
+    if ($task->save()) {
+        return ['success' => true];
+    }
+
+    return ['success' => false, 'message' => 'Failed to update task'];
+}
 
     /**
      * Deletes an existing Task model.

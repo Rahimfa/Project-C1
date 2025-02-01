@@ -19,6 +19,9 @@ $this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, 
 $this->registerMetaTag(['name' => 'description', 'content' => $this->params['meta_description'] ?? '']);
 $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_keywords'] ?? '']);
 $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/favicon.ico')]);
+$this->registerCssFile('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+$this->registerCssFile('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -66,11 +69,11 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 </header>
 
 <main id="main" class="flex-shrink-0" role="main">
-    <div class="container">
-        <?php if (!empty($this->params['breadcrumbs'])): ?>
-            <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]) ?>
-        <?php endif ?>
-        <?= Alert::widget() ?>
+<div class="<?= (!in_array(Yii::$app->controller->action->id,  ['about','login', 'signup'])) ? 'container' : '' ?>">
+
+        <?php if (Yii::$app->controller->id !== 'signup' or Yii::$app->controller->id !== 'login'): ?>
+            <?= Alert::widget() ?>
+        <?php endif; ?>
         <?= $content ?>
     </div>
 </main>
